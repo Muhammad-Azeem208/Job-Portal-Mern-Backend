@@ -51,12 +51,12 @@ export const login = catchErrors(async (req, res, next)=>{
 export const logout = catchErrors(async(req, res, next)=>{
     res.status(201).cookie("token", "", {
         httpOnly:true,
-        expires: new Date(Date.now()),
+        expires: new Date(0),
+        secure:true,
+        sameSite:"None",
     }).json({
         success:true,
         message:"User logged Out!",
-        secure:true,
-        sameSite:"None",
     });
 });
 
